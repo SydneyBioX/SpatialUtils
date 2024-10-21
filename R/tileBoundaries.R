@@ -50,11 +50,11 @@ tileBoundaries = function(me,
   
   boundaries_ls <- dataframeToMEList(bds,
                                      dfType = "boundaries",
-                                     assayName = "tiles",
+                                     assayName = boundariesAssay,
                                      sampleCol = "sample_id",
                                      factorCol = "cell_id",
-                                     xCol = "vertex_x",
-                                     yCol = "vertex_y")
+                                     xCol = "x_location",
+                                     yCol = "y_location")
   
   if (returnBoundariesOnly) return(boundaries_ls)
   # str(boundaries_ls, max.level = 2)
