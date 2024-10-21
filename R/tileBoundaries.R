@@ -10,7 +10,8 @@ tileBoundaries = function(me,
   bds_list = list()
   # I would like to have something like samples(me) give the sample names
   # of the molecules, instead of
-  samples = names(MoleculeExperiment::molecules(me)[[moleculesAssay]])
+  samples = names(MoleculeExperiment::molecules(me, assayName = moleculesAssay)[[moleculesAssay]])
+  
   for (sample in samples){
     
     # enabling something like 
@@ -18,7 +19,7 @@ tileBoundaries = function(me,
     # would be very nice
     # to subset the moleculeExperiment object to just that sample
     
-    molecules_sub = MoleculeExperiment::molecules(me, flatten = TRUE) |>
+    molecules_sub = MoleculeExperiment::molecules(me, assayName = moleculesAssay, flatten = TRUE) |>
       dplyr::filter(sample_id == sample)
     
     # select boundary seed points given grid structure
@@ -63,4 +64,3 @@ tileBoundaries = function(me,
   
   return(me)
 }
-
